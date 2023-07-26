@@ -1,5 +1,6 @@
 //imports
 import React, {useState,useEffect} from "react"
+import Image from "next/image"
 
 const Abc = () => {
 
@@ -52,7 +53,7 @@ return <div>
             hover:cursor-pointer hover:shadow-lg 
             border border-gray-600 hover:border-blue-300"
         >
-                <div className="flex justify-start h-28 w-44 rounded-full border overflow-hidden bg-white"><img  src={avatar} /></div>
+                <div className="flex justify-start h-28 w-44 rounded-full border overflow-hidden bg-white"><Image src={avatar} /></div>
                 <div className="flex flex-col pr-2 h-50 justify-center w-full">
                     <div className="font-bold text-base"> {first_name + " " + last_name}</div>
                     <div className="text-sm">{employment['title']}</div>
