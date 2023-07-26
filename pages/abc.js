@@ -14,9 +14,6 @@ const getData = ()=>{
 const setData =() =>{
     getData().then((data)=>{
         setDataStore(data)
-        for(let i=0;i<data.length;i++){
-            console.log(data[i])
-        }
     })
 }
 
