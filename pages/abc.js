@@ -7,19 +7,20 @@ const Abc = () => {
 const [dataStore, setDataStore] = useState(null)
 
 const getData = ()=>{
-    return fetch('https://random-data-api.com/api/users/random_user?size=9').then(
+    return fetch('https://random-data-api.com/api/users/random_user?size=6').then(
         (completeResponse)=>completeResponse.json()
     )
 }
- 
-const setData =() =>{
-    getData().then((data)=>{
-        setDataStore(data)
-    })
-}
 
 useEffect( 
-    ()=>{ setData() }
+    ()=>{ 
+        const setData =() =>{
+            getData().then((data)=>{
+                setDataStore(data)
+            })
+        }
+        
+        setData() }
     , [] 
 )
 
@@ -40,23 +41,21 @@ return <div>
     <hr/>
 
     <div className="min-w-[750px] max-w-full 
-    flex flex-col justify-around
-    md:grid md:grid-cols-2 sm:mx-4 md:mx-6 
+    justify-center align-middle mt-36 mb-36 md:grid md:grid-cols-2 sm:mx-4 md:mx-6 
     lg:mx-6 xl:mx-24 2xl:mx-28 lg:grid-cols-3 
-    2xl:grid-cols-4 my-16">
+    2xl:grid-cols-4">
 
         {dataStore?.map(({avatar, first_name, last_name, employment,id,gender,subscription})=>{
         return <div className="flex my-2 mx-1" key={id}>
             <div className="flex bg-slate-50  justify-start
-            h-50 min-w-[310px] w-[380px] rounded-2xl space-x-2 p-4 px-5
-            hover:bg-blue-50 hover:scale-105 hover:border-2 
-            hover:cursor-pointer hover:shadow-lg 
-            border border-gray-600 hover:border-blue-300"
+            h-50 min-w-[310px] w-[380px] rounded-2xl space-x-2 p-3 px-5
+            hover:bg-blue-50 hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg 
+            border-gray-600 hover:border-blue-300"
         >
-                <div className="flex justify-start h-28 w-44 rounded-full border overflow-hidden bg-white"><Image src={avatar} /></div>
+                <div className="flex justify-start rounded-full border overflow-hidden bg-white"><Image src={avatar} alt="error loading image" width={200} height={200} /></div>
                 <div className="flex flex-col pr-2 h-50 justify-center w-full">
                     <div className="font-bold text-base"> {first_name + " " + last_name}</div>
-                    <div className="text-sm">{employment['title']}</div>
+                    <div className="text-sm text-slate-600">{employment['title']}</div>
                     <hr/>
                     <div className="grid grid-cols-2 pt-1" >
                         <button className="text-xs border rounded-full m-1 hover:border-black border-yellow-600 hover:bg-yellow-500 hover:text-white bg-yellow-200 text-black">{gender}</button>
