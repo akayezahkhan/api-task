@@ -1,15 +1,10 @@
 // //imports
-import React, {useState,useEffect} from "react"
-import Image from "next/image"
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { getData } from "./api/get";
 
 export default function Home() {
   const [dataStore, setDataStore] = useState(null);
-
-  const getData = () => {
-    return fetch(
-      "https://random-data-api.com/api/users/random_user?size=6"
-    ).then((completeResponse) => completeResponse.json());
-  };
 
   useEffect(() => {
     const setData = () => {
@@ -17,9 +12,9 @@ export default function Home() {
         setDataStore(data);
       });
     };
-
     setData();
   }, []);
+
   return (
     <div>
       <nav className="flex justify-evenly h-16 min-w-[750px] max-w-full items-center bg-blue-500 text-white">

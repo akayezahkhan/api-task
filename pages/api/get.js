@@ -1,3 +1,10 @@
+const getData = () => {
+    return fetch(
+      "https://random-data-api.com/api/users/random_user?size=6"
+    ).then((completeResponse) => completeResponse.json());
+  };
+
+
 function alpha(){
 
     let p = new Promise((resolve)=>{
@@ -16,4 +23,4 @@ function alpha(){
 
 }
 
-export {alpha}
+export {alpha,getData}
